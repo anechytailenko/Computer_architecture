@@ -10,4 +10,3 @@ module full_adder_1_bit (input logic a, b, cin ,
 			cout = g | ( p & cin );
 		end	
 endmodule
-	
