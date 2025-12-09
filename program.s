@@ -1,4 +1,6 @@
 main:
+    # Initialize Stack Pointer to 0x2000 (Top of data memory)
+    lui sp, 0x2       # sp = 0x2000 (0x2 << 12)
     # li t0, 0x1000 - Base address for arrays
     lui t0, 0x1                # t0 = 0x1000 (0x1 << 12 = 0x1000)
     
