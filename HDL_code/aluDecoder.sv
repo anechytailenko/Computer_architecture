@@ -2,7 +2,7 @@ module aluDecoder(
         input logic opb5,
         input logic [2:0] funct3,
         input logic func7b5,
-        inout logic [1:0] ALUOp,
+        input logic [1:0] ALUOp,
         output logic [2:0] ALUControl
     );
 
@@ -16,17 +16,16 @@ module aluDecoder(
             2'b10: // R-type and I-type
                 case(funct3)
                     3'b000: ALUControl = RtypeSub ? 3'b001 : 3'b000; // SUB or ADD/ADDI
-                    3'b111: ALUControl = 3'b000; // AND
-                    3'b110: ALUControl = 3'b011; // OR
+                    3'b111: ALUControl = 3'b011; // AND
+                    3'b110: ALUControl = 3'b100; // OR
                     3'b100: ALUControl = 3'b010; // XOR
-                    3'b001: ALUControl = 3'b100; // SLLI
-                    3'b101: ALUControl = 3'b101; // SRL
+                    3'b001: ALUControl = 3'b101; // SLLI
+                    3'b101: ALUControl = 3'b110; // SRL
                     default: ALUControl = 3'bxxx; // Invalid
                 endcase
 
-            2'b11: ALUControl = 3'b0111; // LUI -> Pass B    
+            2'b11: ALUControl = 3'b111; // LUI -> Pass B    
             default: ALUControl = 3'bxxx; // Invalid
          endcase   
 
 endmodule
-
